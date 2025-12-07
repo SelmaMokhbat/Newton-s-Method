@@ -1,0 +1,6 @@
+# Ignorer tous les notebooks
+*.ipynb
+
+# Ignorer les dossiers de figures
+plot/
+plot_new/
