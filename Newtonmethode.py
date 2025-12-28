@@ -80,9 +80,9 @@ class NewtonMethod:
                 break
 
             x = x_new
-        history_loss.append(self.f(*x_new)) 
+            
         optim_time = time.time() - t0
-
+        history_loss.append(self.f(*x_new))
         return {
             'solution': x,
             'f_min': self.f(*x),
