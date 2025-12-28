@@ -50,6 +50,7 @@ class NewtonMethod:
         trajectory = [x.copy()]
         f_values = [self.f(*x)]
         history_loss = []
+        history_loss = [self.f(*x)] 
         for _ in range(max_iter):
             if self.dimension == 1:
                 g = np.array([self.grad(x[0])])
@@ -75,6 +76,9 @@ class NewtonMethod:
             iterations += 1
             trajectory.append(x_new.copy())
             f_values.append(self.f(*x_new))
+            f_current = self.f(*x_new)
+            #f_values.append(f_current)
+            history_loss.append(f_current)
 
             if np.linalg.norm(x_new - x) < tol:
                 break
@@ -82,7 +86,7 @@ class NewtonMethod:
             x = x_new
             
         optim_time = time.time() - t0
-        history_loss.append(self.f(*x_new))
+        #history_loss.append(self.f(*x_new))
         return {
             'solution': x,
             'f_min': self.f(*x),
